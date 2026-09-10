@@ -1,0 +1,15 @@
+Tajný spis třídy 4.I – pouze pro oči detektivů.
+
+Dnes se v jídelně podává řízek a bramborový salát.
+Pokud čteš tuto větu, jsi na správné stopě.
+>>> TIP: Hledej řádky začínající na 'Heslo dne je:'
+Lidé často přehlédnou dlouhé řádky se spoustou mezer a různými znaky..................
+
+Seznam pověřených osob: Adam, Beáta, Cyril, Dana, Emil.
+Zápis 1 – 02.09.2025: V laboratoři je nový počítač.
+Pozor na falešné stopy – tohle není ono.
+Heslo dne je: kachna123
+Ať tě ani nenapadne to vykřičet po chodbě.
+Nejdelší řádek by mohl být třeba tento s různými znaky: !@#$%^&*()_+-=[]{};':",.<>/? 
+  Odsazený řádek se dvěma mezerami na začátku.
+Konec zprávy.
