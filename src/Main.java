@@ -19,49 +19,63 @@ public class Main {
         int pocet = 0;
         String hledanyText = "Heslo dne je:";
         String radek;
-        String radek1;
         String nejdelsi = "";
-        int pocetStudentu=0;
-        int pocetPraha=0;
-        String vek = "";
-        int vek1;
-        int vek2=0;
         try {
             try (BufferedReader reader1 = Files.newBufferedReader(soubor1);
-                 BufferedReader reader2 = Files.newBufferedReader(soubor2);) {
+                 BufferedReader reader2 = Files.newBufferedReader(soubor2)) {
 
 
-                while ((radek=reader1.readLine()) != null) {
-                    pocet+=1;
+                while ((radek = reader1.readLine()) != null) {
+                    pocet += 1;
                     if (radek.startsWith(hledanyText)) {
                         System.out.println(radek);
                     }
-                    if (radek.length()>nejdelsi.length()) {
+                    if (radek.length() > nejdelsi.length()) {
                         nejdelsi = radek;
                     }
                 }
                 System.out.println(pocet);
                 System.out.println("Nejdelsi radek: " + nejdelsi);
-                while ((radek1=reader2.readLine()) != null) {
+
+
+                int pocetStudentu=0;
+                int pocetPraha=0;
+                String zatoulanyStudent = "";
+                while ((radek = reader2.readLine()) != null) {
+                    if (radek.isBlank()) {
+                        continue;
+                    }
+
                     pocetStudentu++;
 
-                    if (radek1.contains("Praha")) {
-                        pocetPraha+=1;
+                    // Rozdělení podle čárky: casti[0] = jméno, casti[1] = věk, casti[2] = město
+                    String[] casti = radek.split(",");
+                    String jmeno = casti[0].trim();
+                    int vekš = Integer.parseInt(casti[1].trim());
+                    String mesto = casti[2].trim();
+
+                    if (mesto.equalsIgnoreCase("Praha")) {
+                        pocetPraha++;
                     }
-                    String[] datumSplit = vek.split(" ,");
-                    vek = datumSplit[1] + " ," + datumSplit[0] + " ," + datumSplit[2];
-                    vek1=Integer.parseInt(datumSplit[0]);
-                    if (vek1) {}
 
+                    if (vekš > 50) {
+                        zatoulanyStudent = jmeno;
+                    }
                 }
-                System.out.println("");
-                System.out.println("Pocet studentu: " + pocetStudentu);
-                System.out.println("Pocet z prahy: " + pocetPraha);
+
+                // Výpis výsledků pro studenti.txt
+                System.out.println("=== STUDENTI.TXT ===");
+                System.out.println("Počet studentů: " + pocetStudentu);
+                System.out.println("Počet studentů z Prahy: " + pocetPraha);
+                System.out.println("Zatoulaný student (>50 let): " + zatoulanyStudent);
+
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
+        } finally {
 
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
+
 }
